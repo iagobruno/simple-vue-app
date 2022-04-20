@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Home from './pages/Home.vue'
+</script>
 
 <template>
-  <h1>OII</h1>
+  <Home />
 </template>
 
 <style scoped></style>
