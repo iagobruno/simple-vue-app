@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { getUserRepos } from '../services/githubApi'
+import ghApi from '../services/githubApi'
 import StarsCounter from './StarsCounter.vue'
 
 const props = defineProps<{
   username: string
 }>()
 
-const repos = await getUserRepos(props.username)
+const repos = (await ghApi.get(
+  `/users/${props.username}/repos?sort=updated`
+)) as any
 </script>
 
 <template>
