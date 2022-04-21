@@ -1,46 +1,32 @@
 # simple-vue-app
 
-This template should help get you started developing with Vue 3 in Vite.
+[![Online Demo](https://img.shields.io/badge/Online-Demo-brightgreen.svg)](https://simple-vue-app.vercel.app/)
 
-## Recommended IDE Setup
+|                               |                                  |                               |
+| ----------------------------- | -------------------------------- | ----------------------------- |
+| ![](./public/images/home.png) | ![](./public/images/profile.png) | ![](./public/images/repo.png) |
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+## Getting started
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```bash
+> git clone https://github.com/iagobruno/simple-vue-app
+> cd simple-vue-app
+> yarn install
+> yarn run dev
 ```
 
-### Compile and Hot-Reload for Development
+And then open [localhost:3000](http://localhost:3000) in your browser.
 
-```sh
-npm run dev
+By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the sirv commands in package.json to include the option --host 0.0.0.0.
+
+If you're using Visual Studio Code we recommend installing the official extension [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+
+## Building
+
+To create an optimised version of the app:
+
+```bash
+> yarn run build
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+You can now deploy the `dist` folder to any cdn like Netlify.
