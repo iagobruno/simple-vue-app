@@ -1,6 +1,6 @@
 # simple-vue-app
 
-[![Online Demo](https://img.shields.io/badge/Online-Demo-brightgreen.svg)](https://simple-vue-app.vercel.app/)
+[![Online Demo](https://img.shields.io/badge/Online-Demo-brightgreen.svg)](https://simple-vue-app-iagobruno.vercel.app/)
 
 |                               |                                  |                               |
 | ----------------------------- | -------------------------------- | ----------------------------- |
@@ -29,4 +29,4 @@ To create an optimised version of the app:
 > yarn run build
 ```
 
-You can now deploy the `dist` folder to any cdn like Netlify.
+You can now deploy the `dist` folder to any cdn like Netlify or Vercel.
