@@ -1,17 +1,19 @@
 import { createApp } from 'vue'
-import * as VueRouter from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
-import Home from './pages/Home.vue'
-import Profile from './pages/Profile.vue'
+import HomePage from './pages/Home.vue'
+import ProfilePage from './pages/Profile.vue'
+import RepoPage from './pages/Repo.vue'
 import './global.css'
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/view/:username', component: Profile },
+  { path: '/', component: HomePage },
+  { path: '/view/:username', component: ProfilePage },
+  { path: '/view/:username/:reponame', component: RepoPage },
 ]
 
-const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
+const router = createRouter({
+  history: createWebHashHistory(),
   routes,
 })
 

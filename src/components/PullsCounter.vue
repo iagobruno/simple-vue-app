@@ -7,20 +7,20 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="stars-counter">
+  <div class="pulls-counter">
     <img
-      src="/icons/star.svg"
+      src="/icons/pull.svg"
       alt=""
       :width="props.iconSize"
       :height="props.iconSize"
     />
     {{ number }}
-    <span v-if="props.showLabel">Star{{ number === 1 ? '' : 's' }}</span>
+    <span v-if="props.showLabel">Pull{{ number === 1 ? '' : 's' }}</span>
   </div>
 </template>
 
 <style scoped>
-.stars-counter {
+.pulls-counter {
   display: flex;
   align-items: center;
   opacity: 0.8;

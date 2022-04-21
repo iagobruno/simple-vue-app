@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 import { getUserRepos } from '../services/githubApi'
 import StarsCounter from './StarsCounter.vue'
 
@@ -19,7 +20,9 @@ const repos = await getUserRepos(props.username)
         :src="`/icons/${repo.fork ? 'fork' : 'repo'}.svg`"
         alt=""
       />
-      <a :href="`/view/${props.username}/${repo.name}`">{{ repo.name }}</a>
+      <RouterLink :to="`/view/${props.username}/${repo.name}`">{{
+        repo.name
+      }}</RouterLink>
       <StarsCounter :number="repo.stargazers_count" :showLabel="false" />
     </li>
   </ul>
