@@ -4,7 +4,10 @@ import { ref } from 'vue'
 const username = ref('')
 
 function handleSubmit() {
-  location.hash = `/view/${username.value?.trim()}`
+  const name = username.value.trim()
+  if (name.length > 0) {
+    navigateTo(name)
+  }
 }
 </script>
 

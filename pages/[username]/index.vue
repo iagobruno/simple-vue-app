@@ -1,14 +1,25 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import ghApi from '../services/githubApi'
-import ReposList from '../components/ReposList.vue'
+import ghApi from '../../services/githubApi'
+import ReposList from '../../components/ReposList.vue'
 
 const { username } = useRoute().params as Record<string, string>
 
-const user = (await ghApi.get(`/users/${username}`)) as any
+const user = (await ghApi.get(`/users/${username}`).then((res: any) => {
+  return {
+    ...res,
+    company: res.company?.replace(
+      /\@(\w+)/gi,
+      '<a href="https://github.com/$1" target="_blank">$1</a>'
+    ),
+  }
+})) as any
 </script>
 
 <template>
+  <Head>
+    <Title>{{ username }} - GitHub Explorer</Title>
+  </Head>
+
   <div class="page page-profile">
     <div class="avatar__wrapper">
       <img class="avatar" :src="user.avatar_url" alt="" />
