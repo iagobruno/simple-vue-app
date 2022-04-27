@@ -8,6 +8,8 @@
 
 ## Getting started
 
+Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+
 ```bash
 > git clone https://github.com/iagobruno/simple-vue-app
 > cd simple-vue-app

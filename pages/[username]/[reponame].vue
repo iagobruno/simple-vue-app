@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { useRoute, RouterLink } from 'vue-router'
-import ghApi from '../services/githubApi'
+import ghApi from '../../services/githubApi'
 import { parse as parseMarkdown } from 'marked'
-import StarsCounter from '../components/StarsCounter.vue'
-import ForksCounter from '../components/ForksCounter.vue'
-import IssuesCounter from '../components/IssuesCounter.vue'
-import PullsCounter from '../components/PullsCounter.vue'
 
 const { username, reponame } = useRoute().params as Record<string, string>
 
@@ -20,12 +15,20 @@ const readme = (await ghApi
 </script>
 
 <template>
+  <Head>
+    <Title>{{ username }}/{{ reponame }} - GitHub Explorer</Title>
+    <Link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"
+    />
+  </Head>
+
   <div class="page page--repo">
     <div class="repo__header">
-      <RouterLink class="repo__owner" :to="`/view/${repo.owner.login}`">
+      <NuxtLink class="repo__owner" :to="`/${repo.owner.login}`">
         <img :src="repo.owner.avatar_url" alt="" />
         {{ repo.owner.login }}
-      </RouterLink>
+      </NuxtLink>
       <a
         class="repo__name"
         :href="repo.html_url"
@@ -35,9 +38,9 @@ const readme = (await ghApi
       >
       <div v-if="repo.fork" class="repo_forkinfo">
         forked from
-        <RouterLink :to="`/view/${repo.parent.full_name}/`">{{
+        <NuxtLink :to="`/${repo.parent.full_name}/`">{{
           repo.parent.full_name
-        }}</RouterLink>
+        }}</NuxtLink>
       </div>
       <p v-if="repo.description" class="repo__description">
         {{ repo.description }}

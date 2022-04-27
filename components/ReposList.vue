@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
 import ghApi from '../services/githubApi'
 import StarsCounter from './StarsCounter.vue'
 
@@ -22,9 +21,9 @@ const repos = (await ghApi.get(
         :src="`/icons/${repo.fork ? 'fork' : 'repo'}.svg`"
         alt=""
       />
-      <RouterLink :to="`/view/${props.username}/${repo.name}`">{{
+      <NuxtLink :to="`/${props.username}/${repo.name}`">{{
         repo.name
-      }}</RouterLink>
+      }}</NuxtLink>
       <StarsCounter :number="repo.stargazers_count" :showLabel="false" />
     </li>
   </ul>
