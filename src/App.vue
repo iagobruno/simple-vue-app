@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref, onErrorCaptured } from 'vue'
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import Loading from './components/Loading.vue'
 import ErrorComp from './components/Error.vue'
 
-const error = ref<null | Error>(null)
+const route = useRoute()
 
+const error = ref<null | Error>(null)
 onErrorCaptured((er) => {
   error.value = er
 })
@@ -22,7 +23,7 @@ onErrorCaptured((er) => {
     </template>
 
     <template #default>
-      <RouterView />
+      <RouterView :key="route.path" />
     </template>
   </Suspense>
 </template>

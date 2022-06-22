@@ -2,9 +2,8 @@
 
 [![Online Demo](https://img.shields.io/badge/Online-Demo-brightgreen.svg)](https://simple-vue-app-iagobruno.vercel.app/)
 
-|                               |                                  |                               |
-| ----------------------------- | -------------------------------- | ----------------------------- |
 | ![](./public/images/home.png) | ![](./public/images/profile.png) | ![](./public/images/repo.png) |
+| ----------------------------- | -------------------------------- | ----------------------------- |
 
 ## Getting started
 
