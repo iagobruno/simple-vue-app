@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { $ref } from 'vue/macros'
 
-const username = ref('')
+const username = $ref('')
 
 function handleSubmit() {
-  location.hash = `/view/${username.value?.trim()}`
+  location.hash = `/view/${username?.trim()}`
 }
 </script>
 
