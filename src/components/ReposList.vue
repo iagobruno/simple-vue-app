@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import ghApi from '../services/githubApi'
+import ghApi from '../services/GithubApi'
 import StarsCounter from './StarsCounter.vue'
 
 const props = defineProps<{
   username: string
 }>()
 
-const repos = (await ghApi.get(
-  `/users/${props.username}/repos?sort=updated`
-)) as any
+const repos = await ghApi.getReposFromUser(props.username)
 </script>
 
 <template>
@@ -25,7 +23,7 @@ const repos = (await ghApi.get(
       <RouterLink :to="`/view/${props.username}/${repo.name}`">{{
         repo.name
       }}</RouterLink>
-      <StarsCounter :number="repo.stargazers_count" :showLabel="false" />
+      <StarsCounter :number="repo.stargazers_count!" :showLabel="false" />
     </li>
   </ul>
 </template>

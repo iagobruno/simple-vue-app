@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute, RouterLink } from 'vue-router'
-import ghApi from '../services/githubApi'
-import { parse as parseMarkdown } from 'marked'
+import ghApi from '../services/GithubApi'
+import { marked as parseMarkdown } from 'marked'
 import StarsCounter from '../components/StarsCounter.vue'
 import ForksCounter from '../components/ForksCounter.vue'
 import IssuesCounter from '../components/IssuesCounter.vue'
@@ -10,14 +10,8 @@ import PullsCounter from '../components/PullsCounter.vue'
 const { username, reponame } = useRoute().params as Record<string, string>
 
 const [repo, readme] = await Promise.all([
-  ghApi.get(`/repos/${username}/${reponame}`) as any,
-  ghApi
-    .get(`/repos/${username}/${reponame}/readme`, {
-      headers: {
-        Accept: 'application/vnd.github.VERSION.raw',
-      },
-    })
-    .then((markdown) => parseMarkdown(markdown)) as any,
+  ghApi.getRepo(username, reponame),
+  ghApi.getReadme(username, reponame).then((content) => parseMarkdown(content)),
 ])
 </script>
 
@@ -37,8 +31,8 @@ const [repo, readme] = await Promise.all([
       >
       <div v-if="repo.fork" class="repo_forkinfo">
         forked from
-        <RouterLink :to="`/view/${repo.parent.full_name}/`">{{
-          repo.parent.full_name
+        <RouterLink :to="`/view/${repo.parent!.full_name}/`">{{
+          repo.parent!.full_name
         }}</RouterLink>
       </div>
       <p v-if="repo.description" class="repo__description">

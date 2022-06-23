@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import ghApi from '../services/githubApi'
+import ghApi from '../services/GithubApi'
 import ReposList from '../components/ReposList.vue'
 
 const { username } = useRoute().params as Record<string, string>
 
-const user = (await ghApi.get(`/users/${username}`)) as any
+const user = await ghApi.getByUsername(username)
 </script>
 
 <template>
