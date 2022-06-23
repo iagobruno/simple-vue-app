@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { ref, onErrorCaptured } from 'vue'
+import { onErrorCaptured } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
 import Loading from './components/Loading.vue'
 import ErrorComp from './components/Error.vue'
 
 const route = useRoute()
 
-const error = ref<null | Error>(null)
+let error = $ref<Error | null>(null)
 onErrorCaptured((er) => {
-  error.value = er
+  error = er
 })
 </script>
 
@@ -17,15 +17,13 @@ onErrorCaptured((er) => {
     <ErrorComp :message="error.message" />
   </div>
 
-  <Suspense v-else>
-    <template #fallback>
-      <Loading />
-    </template>
+  <RouterView v-else v-slot="{ Component }">
+    <Suspense :key="route.path">
+      <component :is="Component" />
 
-    <template #default>
-      <RouterView :key="route.path" />
-    </template>
-  </Suspense>
+      <template #fallback>
+        <Loading />
+      </template>
+    </Suspense>
+  </RouterView>
 </template>
-
-<style scoped></style>

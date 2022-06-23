@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { $ref } from 'vue/macros'
-
-const username = $ref('')
+let username = $ref('')
 
 function handleSubmit() {
-  location.hash = `/view/${username?.trim()}`
+  if (!username) return
+  location.hash = `/view/${username}`
 }
 </script>
 
@@ -19,7 +18,7 @@ function handleSubmit() {
         <input
           type="text"
           name="gh-username"
-          v-model="username"
+          v-model.trim="username"
           placeholder=" "
           minlength="1"
           maxlength="32"
