@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "axios-cache-adapter": "^2.7.3",
     "marked": "^4.0.14",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"

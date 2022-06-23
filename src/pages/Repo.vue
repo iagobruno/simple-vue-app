@@ -9,14 +9,16 @@ import PullsCounter from '../components/PullsCounter.vue'
 
 const { username, reponame } = useRoute().params as Record<string, string>
 
-const repo = (await ghApi.get(`/repos/${username}/${reponame}`)) as any
-const readme = (await ghApi
-  .get(`/repos/${username}/${reponame}/readme`, {
-    headers: {
-      Accept: 'application/vnd.github.VERSION.raw',
-    },
-  })
-  .then((markdown) => parseMarkdown(markdown))) as any
+const [repo, readme] = await Promise.all([
+  ghApi.get(`/repos/${username}/${reponame}`) as any,
+  ghApi
+    .get(`/repos/${username}/${reponame}/readme`, {
+      headers: {
+        Accept: 'application/vnd.github.VERSION.raw',
+      },
+    })
+    .then((markdown) => parseMarkdown(markdown)) as any,
+])
 </script>
 
 <template>
