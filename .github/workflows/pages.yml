@@ -32,9 +32,9 @@ jobs:
       - run: yarn install
       - name: Setup Pages
         uses: actions/configure-pages@v1
-      - name: Build
+      - name: Run build command
         run: yarn run build
-      - name: Upload artifact
+      - name: Upload build artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: dist/
