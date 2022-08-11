@@ -36,6 +36,9 @@ jobs:
         run: yarn run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+        with:
+          path: dist/
+          retention-days: 1
 
   # Deployment job
   deploy:
